@@ -10,12 +10,13 @@
 - попытка установить pytorch-kaldi:
   - попытка установить kaldi:
     - ошибка
-<code>(base) hupu@fog:~$ copy-feats
-copy-feats: команда не найдена
-(base) hupu@fog:~$ hmm-info
-usage: hmm-info <hmm file>
-commands:
-  -models
-  -general
-  -durations <length>
+<code>
+  (base) hupu@fog:~$ copy-feats
+  copy-feats: команда не найдена
+  (base) hupu@fog:~$ hmm-info
+  usage: hmm-info <hmm file>
+  commands:
+    -models
+    -general
+    -durations <length>
 <code/>
