@@ -8,13 +8,12 @@
 
 Что сделано:
 1. создан этот репозиторий;
-2. установлен pytorch-kaldi:
-  - установлен anaconda, kaldi, pytorch:
+2. установлен pytorch-kaldi (установлены anaconda, kaldi, pytorch);
   ```console
   If you really want to use python 3.8.3 as default, add an empty file /home/hupu/kaldi/tools/python/.use_default_python and run this script again.  
   extras/check_dependencies.sh: all OK.
   ```
-
+3.
 
 
 Решения проблем:  
