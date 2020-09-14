@@ -7,16 +7,9 @@
 
 Что сделано:
 - создан этот репозиторий;
-- попытка установить pytorch-kaldi:
-  - попытка установить kaldi:
-    - ошибка
-```console 
-(base) hupu@fog:~$ copy-feats
-copy-feats: команда не найдена
-(base) hupu@fog:~$ hmm-info
-usage: hmm-info <hmm file>
-commands:
-  -models
-  -general
-  -durations
+- установка pytorch-kaldi:
+  - установка anaconda, kaldi, pytorch:
+  ```
+   If you really want to use python 3.8.3 as default, add an empty file /home/hupu/kaldi/tools/python/.use_default_python and run this script again.
+   extras/check_dependencies.sh: all OK.
 ```
