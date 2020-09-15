@@ -23,7 +23,7 @@ https://www.kaggle.com/mozillaorg/common-voice
 https://www.kaggle.com/primaryobjects/voicegender  
 ещё ссылки на датасеты тут, можно и поискать ещё:  
 https://github.com/jim-schwoebel/voice_datasets
-4. прочитано 50/400 "Глубокое обучение на Python" Франсуа Шолле
+4. прочитано 60/400 "Глубокое обучение на Python" Франсуа Шолле
 
 
 Решения проблем:  
