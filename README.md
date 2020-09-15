@@ -1,7 +1,8 @@
 # vrec_pp
 МИФИ Проектная Практика 2020 "Голосовая идентификация студентов"
 
-**07.09-14.09**
+**07.09-13.09**  
+*Вторая неделя*  
 
 Что ещё сделать в будущем:  
 - Установить Mendeley Web Importer
@@ -23,7 +24,7 @@ https://www.kaggle.com/mozillaorg/common-voice
 https://www.kaggle.com/primaryobjects/voicegender  
 ещё ссылки на датасеты тут, можно и поискать ещё:  
 https://github.com/jim-schwoebel/voice_datasets
-4. прочитано 60/400 "Глубокое обучение на Python" Франсуа Шолле
+4. прочитано 60/400 "Глубокое обучение на Python" Франсуа Шолле  
 
 
 Решения проблем:  
@@ -37,3 +38,14 @@ https://github.com/jim-schwoebel/voice_datasets
 [kaldi](https://kaldi-asr.org)  
 
 [Шпаргалка по Markdown](http://bustep.ru/markdown/shpargalka-po-markdown.html)
+
+**14.09-20.09**  
+*Третья неделя*  
+
+Цели:  
+1) протестировать нейросеть на данных TIMIT
+2) понять, что она делает
+3) дочитать "Глубокое обучение на Python" Франсуа Шолле  
+
+Ссылки на полезную информацию и источники:
+[TIMIT dataset](https://github.com/philipperemy/timit)  
