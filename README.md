@@ -49,16 +49,15 @@ https://github.com/jim-schwoebel/voice_datasets
 4) узнать о MFCC (Mel-Frequency Cepstral Coefficients)  
 5) Long-Term Spectral Divergence  
 
+MFCC:  
+[Преобразовать WAV в MFCC](https://github.com/dspavankumar/compute-mfcc)  
+
 Датасеты на русском языке:  
 https://github.com/snakers4/open_stt/  
 https://www.caito.de/2019/01/the-m-ailabs-speech-dataset/  
 
-
-
 Варианты нейросетей:  
 https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system  
-
-
 
 Ссылки на полезную информацию и источники:  
 [TIMIT dataset](https://github.com/philipperemy/timit)  
