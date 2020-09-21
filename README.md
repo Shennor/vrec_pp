@@ -1,7 +1,7 @@
 # vrec_pp
 МИФИ Проектная Практика 2020 "Голосовая идентификация студентов"
 
-**07.09-13.09**  
+**08.09-15.09**  
 # *Вторая неделя*  
 
 Что ещё сделать в будущем:  
@@ -26,7 +26,6 @@ https://www.kaggle.com/primaryobjects/voicegender
 https://github.com/jim-schwoebel/voice_datasets
 4. прочитано 60/400 "Глубокое обучение на Python" Франсуа Шолле  
 
-
 Решения проблем:  
 *если добавил путь в PATH, перезапусти терминал, прежде чем страдать*  
 *программы или инструменты, оказывается, недостаточно скачать, их нужно ещё и установить*  
@@ -39,18 +38,15 @@ https://github.com/jim-schwoebel/voice_datasets
 
 [Шпаргалка по Markdown](http://bustep.ru/markdown/shpargalka-po-markdown.html)
 
-**14.09-20.09**  
+**15.09-22.09**  
 # *Третья неделя*  
 
 Цели:  
 1) протестировать нейросеть на данных TIMIT
-2) понять, что она делает
+2) понять, что она делает!!!
 3) дочитать "Глубокое обучение на Python" Франсуа Шолле  
 4) узнать о MFCC (Mel-Frequency Cepstral Coefficients)  
 5) Long-Term Spectral Divergence  
-
-MFCC:  
-[Преобразовать WAV в MFCC](https://github.com/dspavankumar/compute-mfcc)  
 
 Датасеты на русском языке:  
 https://github.com/snakers4/open_stt/  
@@ -60,4 +56,6 @@ https://www.caito.de/2019/01/the-m-ailabs-speech-dataset/
 https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system  
 
 Ссылки на полезную информацию и источники:  
+[Librosa](https://github.com/librosa/librosa)
+[Преобразовать WAV в MFCC](https://github.com/dspavankumar/compute-mfcc)  
 [TIMIT dataset](https://github.com/philipperemy/timit)  
