@@ -56,6 +56,10 @@ https://www.caito.de/2019/01/the-m-ailabs-speech-dataset/
 https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system  
 
 Ссылки на полезную информацию и источники:  
-[Librosa](https://github.com/librosa/librosa)
+[Librosa](https://github.com/librosa/librosa)  
 [Преобразовать WAV в MFCC](https://github.com/dspavankumar/compute-mfcc)  
 [TIMIT dataset](https://github.com/philipperemy/timit)  
+
+Проблемы при подготовки TIMIT для pytorch-kaldi:  
+1) qsub:  
+![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/2.jpg "")
