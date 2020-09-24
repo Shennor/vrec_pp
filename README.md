@@ -62,4 +62,9 @@ https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system
 
 Проблемы при подготовки TIMIT для pytorch-kaldi:  
 1) qsub:  
-![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/2.jpg "")
+![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/2.jpg "")  
+
+Найти код, который:
+1) делает звуковые дорожки одинаковыми по размеру  
+2) переводит их в mfcc  
+3) содержит нейросеть  
