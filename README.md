@@ -81,4 +81,4 @@ https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system
  5) данные могут быть любого размера (они обрезаются перед входом в нейросеть)  
  6) данные записываются в виде numpy array перед анализом  
  
- 
+[Диаризация на основе модели GMM-UBM и алгоритма MAP adaptation] (https://m.habr.com/ru/post/420515/)  
