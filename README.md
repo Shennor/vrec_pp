@@ -78,4 +78,27 @@ https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system
  2) для обучения используется cosine simitiarity (косинусный коэфициент) - определяется косинус "угла" между предсказанным и ожидаемым векторами, чем ближе полученное значение к 1, тем меньше угол и, соответственно, больше точность предсказания  
  3) 
  
+ ### Пробные тесты обученной нейосети ResCNN_softmax_pre_training_checkpoint_102.h5 с моим голосом:  
+ 1) cosine similiarity мой голос - русск (номера - записи отрывков из книг, SAME SPEAKER - значение между указанными номерами, DIFF SPEAKER - между номером и записью другого человека (samples/PhilippeRemy/PhilippeRemy_002.wav)):  
+ - 1 и 3 SAME SPEAKER [0.58378375] (плоховато)  
+ - 1 DIFF SPEAKER [-0.13367558]  
+ - 3 и 4 SAME SPEAKER [0.3899359] (плохо)  
+ - 3 DIFF SPEAKER [0.020014]
+ - 4 и 5 SAME SPEAKER [0.6028304]  
+ - 5 DIFF SPEAKER [0.01057245]
+ - 6 и 5 SAME SPEAKER [0.31917924] (плохо)  
+ - 6 DIFF SPEAKER [0.01787219]
+ - 2 и 5 SAME SPEAKER [0.5059043] (плоховато)  
+ - 2 DIFF SPEAKER [-0.00309112]
+ 2) cosine similiarity голос автора - англ:  
+ SAME SPEAKER [0.7715848]  
+ DIFF SPEAKER [-0.12826478]  
+
+
+
+
+
+ 
+ 
+ 
 [Диаризация на основе модели GMM-UBM и алгоритма MAP adaptation] (https://m.habr.com/ru/post/420515/)  
