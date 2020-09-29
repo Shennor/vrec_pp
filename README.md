@@ -91,20 +91,26 @@ https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system
  - 2 и 5 SAME SPEAKER [0.5059043] (плоховато)  
  - 2 DIFF SPEAKER [-0.00309112]  
  2) cosine similiarity голос автора - англ:  
- <code>SAME SPEAKER [0.7715848]  
+ SAME SPEAKER [0.7715848]  
  DIFF SPEAKER [-0.12826478]  
-</code>
  3) cosine similiarity англ LibriSpeech
-<code>samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/LibriSpeechSamples/19/198/19-198-0022.wav  
-SAME SPEAKER [0.7663208]  
-samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/PhilippeRemy/PhilippeRemy_001.wav  
-DIFF SPEAKER [-0.12552892]  
-</code>
+  женский женский мужской  
+  samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/LibriSpeechSamples/19/198/19-198-0022.wav  
+  SAME SPEAKER [0.7663208]  
+  samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/PhilippeRemy/PhilippeRemy_001.wav  
+  DIFF SPEAKER [-0.12552892]  
+  samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/LibriSpeechSamples/19/227/19-227-0016.wav  
+  SAME SPEAKER [0.62854576]  
+  samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/PhilippeRemy/PhilippeRemy_001.wav  
+  DIFF SPEAKER [-0.12552892] 
+  мужской мужской мужской  
+  samples/LibriSpeechSamples/26/496/26-496-0004.wav  &  samples/LibriSpeechSamples/26/496/26-496-0026.wav  
+  SAME SPEAKER [0.70082587]  
+  samples/LibriSpeechSamples/26/496/26-496-0004.wav  &  samples/PhilippeRemy/PhilippeRemy_001.wav  
+  DIFF SPEAKER [0.21883845]  
+  samples/LibriSpeechSamples/26/495/26-495-0019.wav  &  samples/LibriSpeechSamples/26/496/26-496-0026.wav  
+  SAME SPEAKER [0.51492935]  
+  samples/LibriSpeechSamples/26/495/26-495-0019.wav  &  samples/PhilippeRemy/PhilippeRemy_003.wav  
+  DIFF SPEAKER [0.10637974]  
 
-
-
-
- 
- 
- 
 [Диаризация на основе модели GMM-UBM и алгоритма MAP adaptation] (https://m.habr.com/ru/post/420515/)  
