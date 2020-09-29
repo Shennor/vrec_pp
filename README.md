@@ -89,11 +89,17 @@ https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system
  - 6 и 5 SAME SPEAKER [0.31917924] (плохо)  
  - 6 DIFF SPEAKER [0.01787219]
  - 2 и 5 SAME SPEAKER [0.5059043] (плоховато)  
- - 2 DIFF SPEAKER [-0.00309112]
+ - 2 DIFF SPEAKER [-0.00309112]  
  2) cosine similiarity голос автора - англ:  
- SAME SPEAKER [0.7715848]  
+ <code>SAME SPEAKER [0.7715848]  
  DIFF SPEAKER [-0.12826478]  
-
+</code>
+ 3) cosine similiarity англ LibriSpeech
+<code>samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/LibriSpeechSamples/19/198/19-198-0022.wav  
+SAME SPEAKER [0.7663208]  
+samples/LibriSpeechSamples/19/198/19-198-0001.wav  &  samples/PhilippeRemy/PhilippeRemy_001.wav  
+DIFF SPEAKER [-0.12552892]  
+</code>
 
 
 
