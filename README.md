@@ -129,4 +129,32 @@ https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system
 ## Откуда брать аудио для датасета
 
 [Бесплатные любительские аудиокниги в открытом доступе](https://prochtu.ru/)  
-(спросила администратора сайта про авторские права на аудиофайлы и можно ли их использовать)
+(спросила администратора сайта про авторские права на аудиофайлы и можно ли их использовать)  
+
+
+# Шестая неделя  
+
+1) Попытка обучения на Colab:  
+https://colab.research.google.com/drive/1GPQ7H0FO21JLASm9HOSz6EpRlsrVfBNA?usp=sharing  
+Датасет для обучения Voxforge+audiobook (ссылка от автора):  
+https://github.com/vlomme/Multi-Tacotron-Voice-Cloning  
+Результаты за выделяемые сисемой 12 часов:  
+```
+2020-10-09 04:25:23.081216: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+Using TensorFlow backend.
+2020-10-09 04:25:26,438 - INFO - Training with the triplet loss.
+2020-10-09 04:25:26.525584: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-10-09 04:25:26.592431: E tensorflow/stream_executor/cuda/cuda_driver.cc:314] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2020-10-09 04:25:26.592511: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (b068085c1773): /proc/driver/nvidia/version does not exist
+2020-10-09 04:25:26.626756: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2300000000 Hz
+2020-10-09 04:25:26.627025: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7b068c0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-10-09 04:25:26.627060: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-10-09 04:25:33,551 - INFO - Picking audio from /content/drive/My Drive/Colab Notebooks/deep_speaker/samples/book.
+Initializing the batcher: 100% 4/4 [02:40<00:00, 40.01s/it]
+Build test set: 100% 200/200 [02:54<00:00,  1.14it/s]
+
+Epoch 1/1000
+1099/2000 [===============>..............] - ETA: 9:44:45 - loss: 0.6841
+```
+2) Сбор датасета некоторых студентов:  
+https://github.com/Shennor/vrec_pp/tree/master/samples/student_samples  
