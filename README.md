@@ -158,3 +158,15 @@ Epoch 1/1000
 ```
 2) Сбор датасета некоторых студентов:  
 https://github.com/Shennor/vrec_pp/tree/master/samples/student_samples  
+
+# Седьмая неделя
+
+Обучение на Colab GPU:  
+```
+Epoch 88/1065
+22176/22176 [==============================] - 51s 2ms/sample - loss: 0.3241 - accuracy: 0.9991 - val_loss: 0.9072 - val_accuracy: 0.9482
+```
+Результаты на тестах:  
+```
+2020-10-15 15:49:17,555 - INFO - f-measure = 0.776, true positive rate = 0.703, accuracy = 0.996, equal error rate = 0.101
+```
