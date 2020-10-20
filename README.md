@@ -170,3 +170,7 @@ Epoch 88/1065
 ```
 2020-10-15 15:49:17,555 - INFO - f-measure = 0.776, true positive rate = 0.703, accuracy = 0.996, equal error rate = 0.101
 ```
+
+# Восьмая неделя  
+
+![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/app_architecrure.png)  
