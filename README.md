@@ -174,3 +174,7 @@ Epoch 88/1065
 # Восьмая неделя  
 
 ![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/app_architecrure.png)  
+
+
+
+https://github.com/ppwwyyxx/speaker-recognition
