@@ -178,3 +178,6 @@ Epoch 88/1065
 
 
 https://github.com/ppwwyyxx/speaker-recognition
+  
+PyAudio для записи звука    
+https://blog-programmista.ru/post/103-python-ispolzuem-pyaudio-dla-zapisi-zvuka.html  
