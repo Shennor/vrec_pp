@@ -15,6 +15,7 @@ from PySimpleGUI import cprint
 
 AUDIOBASE = 'student_samples/'
 PREDICTED_BASE = 'student_features/'
+ID_NAMES_FILE = 'student_samples/ids.txt'
 
 def make_student_prediction( model):
     students = find_files(AUDIOBASE)
@@ -202,6 +203,58 @@ def print_verification_result(base):
         cprint(f'Verification result for {key}:')
         cprint(f'Average similarity: {base[key][0] * 100}%')
         cprint(f'Max similarity: {base[key][1] * 100}%')
+
+
+def get_id_dict():
+    f = open(ID_NAMES_FILE, 'r')
+    #print('1')
+    id_dict = dict()
+    #print('2')
+    for line in f:
+        #print('3')
+        #print(line)
+        line = line.split('\n')[0]
+        #print(line)
+        #print('4')
+        if not line.replace(' ', '')  == '':
+            student_id, name = line.split(' - ')
+            #print('5')
+            #print(name)
+            id_dict[student_id] = name
+    return id_dict
+
+
+def update_ids_dict(id_dict):
+    f = open(ID_NAMES_FILE, 'w')
+    for key, value in id_dict.items():
+        f.write(str(key) + ' - ' + str(value) + '\n')
+    f.close()
+
+
+def id_from_name(name, id_dict):
+    for key, value in id_dict.items():
+        if value == name:
+            return key
+    return None
+
+
+def rename_student(old_name, new_name, id_dict):
+    print(new_name)
+    for key, value in id_dict.items():
+        if value == old_name:
+            id_dict[key] = new_name
+            update_ids_dict(id_dict)
+            return True
+    return False
+
+
+def add_name_to_dict(name, student_id, id_dict):
+    id_dict[student_id] = name
+    update_ids_dict(id_dict)
+
+
+def names_list():
+    return list(get_id_dict().values())
 
 #Model start:
 #model = DeepSpeakerModel()

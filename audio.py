@@ -31,21 +31,6 @@ def read_mfcc(input_filename, sample_rate):
     mfcc = mfcc_fbank(audio_voice_only, sample_rate)
     return mfcc
 
-def make_mfcc_from_frames(audio, sample_rate):
-    #определяем порог тишины
-    energy = np.abs(audio)
-    silence_threshold = np.percentile(energy, 95)
-    #(получаем массив bool)
-    #выбираем только те значения, которые выше порога тишины (остальные просто обрасываются)
-    offsets = np.where(energy > silence_threshold)[0]
-    # left_blank_duration_ms = (1000.0 * offsets[0]) // self.sample_rate  # frame_id to duration (ms)
-    # right_blank_duration_ms = (1000.0 * (len(audio) - offsets[-1])) // self.sample_rate
-    # TODO: could use trim_silence() here or a better VAD.
-    audio_voice_only = audio[offsets[0]:offsets[-1]]
-    #получаем mfcc
-    mfcc = mfcc_fbank(audio_voice_only, sample_rate)
-    return mfcc
-
 # возвращает из пути файла идентификаторы говорящего и высказывания
 def extract_speaker_and_utterance_ids(filename: str):  # LIBRI.
     # 'audio/dev-other/116/288045/116-288045-0000.flac'

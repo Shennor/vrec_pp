@@ -1,11 +1,15 @@
 import PySimpleGUI as sg
-from check import id_list, predict_by_file, predict_default, predict_by_id, verify_student, print_verification_result, find_statistics, print_statistics, PREDICTED_BASE, make_student_prediction, get_device_list
+from check import *
 from conv_models import DeepSpeakerModel
 import os.path
 
 sg.theme("NeutralBlue")
 
-ids = id_list()
+ids = get_id_dict()
+#print('1')
+#print(ids)
+names = list(ids.values())
+#print(names)
 devices = get_device_list()
 
 file_list_column = [
@@ -21,13 +25,20 @@ file_list_column = [
             sg.Listbox(values=devices, enable_events=True, size=(40, 8), key="-DEVICE LIST-"),
         #список устройств с возможностью выбрать
         ],
-        [sg.Radio("Record from default output", "RADIO1", key="-DEFAULT OUTPUT-")],
+        [sg.Checkbox("Record from default output", default=False, enable_events=True, key="-DEFAULT OUTPUT-")],
         [sg.Text('_'*80)],
-        [sg.Text("2) choose identification or verification mode (for verification don't forget to enter speaker ID)")],
+        [sg.Text("2) choose speaker from list (for verification or for editting his name")],
         [sg.Text("Speakers list:")],
         [
-            sg.Listbox(values=ids, enable_events=True, size=(40, 10), key="-ID LIST-"),
+            sg.Listbox(values=names, enable_events=True, size=(40, 10), key="-NAMES LIST-"),
         ],
+        [
+            sg.Text("New name: "),
+            sg.In(size=(25, 1), enable_events=True, key="-NEW NAME-"),
+        ],
+        [sg.Button('Rename', key="-RENAME-")],
+        [sg.Text('_'*80)],
+        [sg.Text("3) choose identification or verification mode")],
         [   
             sg.Button('Identify', key="-IDENTIFY-"),
             sg.Button('Verify', key="-VERIFY-"),
@@ -64,14 +75,19 @@ model.m.load_weights(checkpoint, by_name=True)
 filename = None
 speaker_id = None
 device_id = None
+id_dict = get_id_dict()
+new_name = None
+old_name = None
+default = False
 
+
+sg.cprint_set_output_destination(window, "-OUTPUT-")
 
 while True:
     event, values = window.read() 
-    sg.cprint_set_output_destination(window, "-OUTPUT-")
-    default = window["-DEFAULT OUTPUT-"].get()
-    sg.cprint(default)
-
+    #sg.cprint_set_output_destination(window, "-OUTPUT-")
+    #default = window["-DEFAULT OUTPUT-"].get()
+    #sg.cprint(default)
     if event == "Exit" or event == sg.WIN_CLOSED:
         break
     elif event == "-FILENAME-":
@@ -80,22 +96,35 @@ while True:
     elif event == "-DEVICE LIST-":
         device_id = int(values["-DEVICE LIST-"][0].split(' ')[0])
         filename = None
-    elif event == "-ID LIST-":
-        speaker_id = values["-ID LIST-"][0]
+   # elif event == "-DEFAULT OUTPUT-":
+    #    default = values["-DEFAULT OUTPUT-"]       
+    elif event == "-NAMES LIST-":
+        old_name = values["-NAMES LIST-"][0]
+        speaker_id = id_from_name(old_name, ids)
+    elif event == "-RENAME-":
+        if old_name == None:
+            sg.cprint("Please choose speaker from list to rename him/her...")
+        elif new_name == None or new_name.replace(' ', '') == '':
+            sg.cprint("Please enter new speaker name to rename him/her...")
+        else:
+            rename_student(old_name, values["-NEW NAME-"], ids)
+        window["-NAMES LIST-"].update(names_list())
+    elif event == "-NEW NAME-":
+        new_name = values["-NEW NAME-"]
     elif event == "-IDENTIFY-" or event == "-VERIFY-":
         pred_tensor = []
-        sg.cprint('1')
-        if default:
+        #sg.cprint('1')
+        if values["-DEFAULT OUTPUT-"]:
             pred_tensor = predict_default(model)
-            sg.cprint('4')
+            #sg.cprint('4')
         elif not filename == None:
             pred_tensor = predict_by_file(filename, model)
-            sg.cprint('2')
+            #sg.cprint('2')
         elif not device_id == None:
             #sg.cprint("Say something...")
             pred_tensor = predict_by_id(device_id, model)
             #sg.cprint("Record finished!")
-            sg.cprint('3')
+            #sg.cprint('3')
         else:
             sg.cprint("Please choose file or device to record or click 'Record from default output'!")
         if not pred_tensor == []:
