@@ -11,7 +11,7 @@
 1. создан этот репозиторий;
 2. установлен pytorch-kaldi (установлены anaconda, kaldi, pytorch);  
   
-![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/1.png "pytorch-kaldi установлен!)")  
+![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/pictures/1.png "pytorch-kaldi установлен!)")  
   
   ```console
   If you really want to use python 3.8.3 as default, add an empty file /home/hupu/kaldi/tools/python/.use_default_python and run this script again.  
@@ -62,7 +62,7 @@ https://github.com/Walleclipse/Deep_Speaker-speaker_recognition_system
 
 Проблемы при подготовки TIMIT для pytorch-kaldi:  
 1) qsub:  
-![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/2.jpg "")  
+![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/pictures/2.jpg "")  
 
 Найти код, который:
 1) делает звуковые дорожки одинаковыми по размеру  
@@ -173,7 +173,7 @@ Epoch 88/1065
 
 # Восьмая неделя  
 
-![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/app_architecrure.png)  
+![alt-текст](https://github.com/Shennor/vrec_pp/blob/master/pictures/app_architecrure.png)  
 
 
 
