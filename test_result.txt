@@ -1,0 +1,17 @@
+2020-11-17 23:23:23,599 - INFO - f-measure = 0.833, true positive rate = 0.714, accuracy = 0.997, equal error rate = 0.143
+
+test my checkpoint
+
+2020-11-17 21:03:27,598 - INFO - f-measure = 0.706, true positive rate = 0.545, accuracy = 0.995, equal error rate = 0.021
+
+2020-11-17 21:49:56,392 - INFO - f-measure = 0.818, true positive rate = 0.692, accuracy = 0.997, equal error rate = 0.064
+
+2020-11-17 22:02:12,462 - INFO - f-measure = 0.889, true positive rate = 0.923, accuracy = 0.998, equal error rate = 0.003
+
+
+test author's checkpoint:
+
+2020-11-17 21:01:54,127 - INFO - f-measure = 0.857, true positive rate = 0.818, accuracy = 0.997, equal error rate = 0.070
+
+2020-11-17 21:51:38,084 - INFO - f-measure = 0.727, true positive rate = 0.923, accuracy = 0.993, equal error rate = 0.005
+
