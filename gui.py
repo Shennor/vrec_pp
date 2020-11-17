@@ -50,6 +50,7 @@ file_list_column = [
 ]
 
 result_viewer_column = [
+    [sg.Text('We consider a person recognized if the average value is more than 40% \n and maximum is more than 70% at the same time. \n Else we consider a person incognito.')],
     [sg.Text("Output:")],
     [sg.Multiline(size=(50, 40), key="-OUTPUT-")],
     [sg.Button("Clear", key="-CLEAR-")],
@@ -69,6 +70,7 @@ window = sg.Window("Speaker Recognition Tool", layout)
 
 # Run model
 model = DeepSpeakerModel()
+#checkpoint = 'ResCNN_softmax_pre_training_checkpoint_102.h5'
 checkpoint = 'ResCNN_checkpoint_36.h5'
 model.m.load_weights(checkpoint, by_name=True)
 
@@ -141,8 +143,9 @@ while True:
     elif event == "-UPDATE-":
         sg.cprint("Running the model and making prediction for all available samples. Please, wait a few minutes...")
         make_student_prediction(model)
-        new_ids = id_list()
-        window["-ID LIST-"].update(new_ids)
+        ids = get_id_dict()
+        names = list(ids.values())
+        window["-NAMES LIST-"].update(names)
     elif event == "-CLEAR-":
         window["-OUTPUT-"].update("")
 
