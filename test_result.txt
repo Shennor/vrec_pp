@@ -15,3 +15,8 @@ test author's checkpoint:
 
 2020-11-17 21:51:38,084 - INFO - f-measure = 0.727, true positive rate = 0.923, accuracy = 0.993, equal error rate = 0.005
 
+BUT!
+
+Recognition of 110 (Никита Александров)
+with my checkpoint: average ~52.37%, max ~79.66%
+with author's chekpoint: average and max < 10% for all for other people it may be highter.
