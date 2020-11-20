@@ -27,7 +27,7 @@ file_list_column = [
         ],
         [sg.Checkbox("Record from default output", default=False, enable_events=True, key="-DEFAULT OUTPUT-")],
         [sg.Text('_'*80)],
-        [sg.Text("2) choose speaker from list (for verification or for editting his name")],
+        [sg.Text("2) choose speaker from list (for verification or for editting his name)")],
         [sg.Text("Speakers list:")],
         [
             sg.Listbox(values=names, enable_events=True, size=(40, 10), key="-NAMES LIST-"),
@@ -44,15 +44,20 @@ file_list_column = [
             sg.Button('Verify', key="-VERIFY-"),
         ],
         [sg.Text('_'*80)],
-        [sg.Text("If you have new checkpoint or there were some changes in base, you should update the base"),
+        [sg.Text("4*) If you have new checkpoint or there were some changes in base, you should update the base"),
         sg.Button("Update base", key="-UPDATE-"),
         ],
 ]
 
 result_viewer_column = [
+    [sg.Text('5*) to add new student enter his/her name:'),
+         sg.In(size=(13, 1), enable_events=True, key="-NAME-"),
+         sg.Button('Add', key="-ADD NAME")],
+    [sg.Text('then add files to directory or record file')],
+
     [sg.Text('We consider a person recognized if the average value is more than 40% \n and maximum is more than 70% at the same time. \n Else we consider a person incognito.')],
     [sg.Text("Output:")],
-    [sg.Multiline(size=(50, 40), key="-OUTPUT-")],
+    [sg.Multiline(size=(50, 25), key="-OUTPUT-")],
     [sg.Button("Clear", key="-CLEAR-")],
 ]
 
@@ -70,8 +75,8 @@ window = sg.Window("Speaker Recognition Tool", layout)
 
 # Run model
 model = DeepSpeakerModel()
-#checkpoint = 'ResCNN_softmax_pre_training_checkpoint_102.h5'
-checkpoint = 'ResCNN_checkpoint_36.h5'
+checkpoint = 'ResCNN_softmax_pre_training_checkpoint_102.h5'
+#checkpoint = 'ResCNN_checkpoint_36.h5'
 model.m.load_weights(checkpoint, by_name=True)
 
 filename = None

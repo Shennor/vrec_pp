@@ -16,8 +16,12 @@ from PySimpleGUI import cprint
 AUDIOBASE = 'student_samples/'
 PREDICTED_BASE = 'student_features/'
 ID_NAMES_FILE = 'student_samples/ids.txt'
+NUM = 10
+LAST_FILENAME =  'last_input_voice.wav'
 
-def make_student_prediction( model):
+
+#make base prediction from AUDIOBASE (save predicted tensors in PREDICTED_BASE)
+def make_student_prediction(model):
     students = find_files(AUDIOBASE)
     ensures_dir(PREDICTED_BASE)
     for stud in students:
@@ -31,37 +35,51 @@ def make_student_prediction( model):
         np.save(filename, predict)
 
 
+#return predicted tensor of sample file
 def predict_by_file(filename, model):
     return model.m.predict(np.expand_dims(sample_from_mfcc(read_mfcc(filename, SAMPLE_RATE), NUM_FRAMES), axis=0))
 
 
+#sort result list by reducing average similarity
 def sort_by_average(base):
     list_d = list(base.items())
-    #[speaker, [average, max_cosine]]
-    #sort >= by average
     list_d.sort(key=lambda i: i[1][0], reverse=True)
+    #now result list consist [speaker, [average, max_cosine]] sorted
     return list_d
 
 
+#sort result list by reducing max similarity
 def sort_by_max_cosine(base):
     list_d = list(base.items())
     list_d.sort(key=lambda i: i[1][1], reverse=True)
+    #now result list consist [speaker, [average, max_cosine]] sorted
     return list_d
 
 
+#print statistics of identification to GUI widget
+#we printing NUM first lines
 def print_statistics(base):
     sorted_average = sort_by_average(base)
     sorted_max_cosine = sort_by_max_cosine(base)
     cprint('Average probability')
+    cnt = 0
     for i in sorted_average:
+        cnt += 1
         percent = i[1][0] * 100
         cprint(f'Speaker {i[0]}: {percent}%')
+        if cnt >= NUM:
+            break
     cprint('Max match')
+    cnt = 0
     for i in sorted_max_cosine:
+        cnt += 1
         percent = i[1][1] * 100
         cprint(f'Speaker {i[0]}: {percent}%')
+        if cnt >= NUM:
+            break
 
 
+#find all audio devices in system and return list of them
 def get_device_list():
     p = pyaudio.PyAudio()
     res = list()
@@ -70,6 +88,9 @@ def get_device_list():
     return res
 
 
+#record audiofile by device with this id
+#save this file as LAST_FILENAME
+#and return predicted tensor of this file
 def predict_by_id(device_id, model):
     p = pyaudio.PyAudio()
     chunk = 1024
@@ -77,7 +98,7 @@ def predict_by_id(device_id, model):
     channels = 1 
     rate = SAMPLE_RATE
     seconds = 4
-    filename = 'last_input_voice.wav'
+    filename = LAST_FILENAME
     stream = p.open(format=sample_format,
     channels=channels,
     rate=rate,
@@ -100,9 +121,13 @@ def predict_by_id(device_id, model):
     wf.setframerate(rate)
     wf.writeframes(b''.join(frames))
     wf.close()
-    return model.m.predict(np.expand_dims(sample_from_mfcc(read_mfcc('last_input_voice.wav', SAMPLE_RATE), NUM_FRAMES), axis=0))
+    return model.m.predict(np.expand_dims(sample_from_mfcc(read_mfcc(
+        'last_input_voice.wav', SAMPLE_RATE), NUM_FRAMES), axis=0))
 
 
+#record audio from default output device
+#save it as LAST_FILENAME
+#and return predicted tensor of this file
 def predict_default(model):    
     p = pyaudio.PyAudio()
     speakers = p.get_default_output_device_info()["hostApi"]
@@ -139,9 +164,11 @@ def predict_default(model):
     wf.setframerate(rate)
     wf.writeframes(b''.join(frames))
     wf.close()
-    return model.m.predict(np.expand_dims(sample_from_mfcc(read_mfcc('last_input_voice.wav', SAMPLE_RATE), NUM_FRAMES), axis=0))
+    return model.m.predict(np.expand_dims(sample_from_mfcc(
+        read_mfcc('last_input_voice.wav', SAMPLE_RATE), NUM_FRAMES), axis=0))
 
 
+#make set of speakers ids and return sorted list of them
 def id_list():
     samples = find_files(PREDICTED_BASE, 'npy')
     base = set()
@@ -151,6 +178,8 @@ def id_list():
     return list(sorted(base))
 
 
+#compare predicted tensor with tensors in directory basepath
+#make result dict with average and max similarity to each speaker in directory
 def find_statistics(pred_tensor, basepath):
     samples = find_files(basepath, 'npy')
     base = dict()
@@ -175,6 +204,7 @@ def find_statistics(pred_tensor, basepath):
     return res
 
 
+#check if id correct or not
 def id_exist(student_id):
     if len(student_id) == 0:
         return False
@@ -184,13 +214,16 @@ def id_exist(student_id):
         return True
     
 
+#make verification result to pred_tensor with features
+#of student with student_id
 def verify_student(pred_tensor, student_id):
-    student_id = re.sub(r'\s', '', student_id) #Уберем все пробельные символы
+    student_id = re.sub(r'\s', '', student_id) 
+    #delete all tabs and spaces
     student_id.replace('/', '')
     if not id_exist(student_id): 
         return dict()
     else:
-        return find_statistics(pred_tensor,PREDICTED_BASE + student_id)
+        return find_statistics(pred_tensor, PREDICTED_BASE + student_id)
 
 
 def print_verification_result(base):
@@ -205,25 +238,20 @@ def print_verification_result(base):
         cprint(f'Max similarity: {base[key][1] * 100}%')
 
 
+#read ID_NAMES_FILE and make dict id -> name
 def get_id_dict():
     f = open(ID_NAMES_FILE, 'r')
-    #print('1')
     id_dict = dict()
-    #print('2')
     for line in f:
-        #print('3')
-        #print(line)
         line = line.split('\n')[0]
-        #print(line)
-        #print('4')
         if not line.replace(' ', '')  == '':
             student_id, name = line.split(' - ')
-            #print('5')
-            #print(name)
             id_dict[student_id] = name
     return id_dict
 
 
+#rewrite ID_NAMES_FILE with new id_dict 
+#there was some changes as adding or rename student
 def update_ids_dict(id_dict):
     f = open(ID_NAMES_FILE, 'w')
     for key, value in id_dict.items():
@@ -238,8 +266,10 @@ def id_from_name(name, id_dict):
     return None
 
 
+#change student name in base and return True if all correct
+#if there's no student with old_name return False
 def rename_student(old_name, new_name, id_dict):
-    print(new_name)
+    #print(new_name)
     for key, value in id_dict.items():
         if value == old_name:
             id_dict[key] = new_name
@@ -248,13 +278,45 @@ def rename_student(old_name, new_name, id_dict):
     return False
 
 
+#... and rewrite ID_NAMES_FILE
 def add_name_to_dict(name, student_id, id_dict):
     id_dict[student_id] = name
     update_ids_dict(id_dict)
 
 
+#if recording by default output device_id must be None
+#features at PREDICTED_BASE
+def record_and_add_feature(model, student_id, device_id):
+    if not id_exists(student_id):
+        return False
+    sp = student_id
+    features = find_files(PREDICTED_BASE + f'{sp}/')
+    utt = len(features) + 1
+    if device_id == None:
+        tensor = predict_default(model)
+    else:
+        tensor = predict_by_id(device_id, model)
+    filename = os.path.join(PREDICTED_BASE, f'{sp}/{utt}.npy')
+    ensure_dir_for_filename(filename)
+    np.save(filename, predict)
+    return True
+
+
+#add pair id-name to ID_NAMES_FILE, make directory in PREDICTED_BASE
+#return False if student_id is exists in ID_NAMES_FILE
+def add_student(name):
+    d = get_id_dict()
+    student_id = int(max(d)) + 1
+    if id_from_name(name, d) == None:
+        ensures_dir(os.path.join(PREDICTED_BASE, f'{student_id}/'))
+        ensures_dir(os.path.join(AUDIOBASE, f'{student_id}/01/')
+        add_name_to_dict(name, student_id, d)
+        return True
+    return False
+
+
 def names_list():
-    return list(get_id_dict().values())
+    return sorted(list(get_id_dict().values()))
 
 #Model start:
 #model = DeepSpeakerModel()
